@@ -120,3 +120,108 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(40px, -60px) scale(1.2);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 8s infinite ease-in-out;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+@keyframes fadeInMoveUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInMoveUp 0.6s ease-out forwards;
+}
+
+.bg-subtle-pattern {
+  background-color: var(--background);
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      hsl(var(--color-accent-teal-hsl) / 0.08) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      hsl(var(--color-accent-teal-hsl) / 0.08) 0%,
+      transparent 60%
+    );
+}
+.bg-subtle-pattern-alt {
+  background-color: var(--card);
+  background-image: radial-gradient(
+      circle at 80% 10%,
+      hsl(var(--color-accent-teal-hsl) / 0.08) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 20% 90%,
+      hsl(var(--color-accent-teal-hsl) / 0.08) 0%,
+      transparent 60%
+    );
+}
+
+.bg-gradient-cta {
+  background-image: linear-gradient(
+    to right top,
+    hsl(var(--primary)),
+    hsl(var(--secondary))
+  );
+}
+
+a.custom-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-button.primary-btn {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+.custom-button.primary-btn:hover {
+  background-color: hsl(var(--primary) / 0.9);
+}
+
+.custom-button.white-btn {
+  background-color: var(--color-white-hex);
+  color: var(--color-dark-text-hex);
+  border: 1px solid var(--border);
+}
+.custom-button.white-btn:hover {
+  background-color: var(--color-light-bg-hex);
+}
