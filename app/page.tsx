@@ -14,66 +14,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaGooglePlay } from "react-icons/fa";
 
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
 
 const Home = () => {
   return (
     <>
-      <header className="py-2 px-4 md:px-8 bg-card shadow-sm fixed top-0 left-0 right-0 z-50 rounded-b-xl">
-        <nav className="flex justify-between items-center max-w-7xl mx-auto">
-          <div className="flex items-center gap-2">
-            <Image
-              src="/icons/sql_studio_icon.png"
-              alt="SQL Studio Logo"
-              width={60}
-              height={60}
-              className="rounded-lg"
-            />
-            <h2 className="text-xl font-bold text-foreground">SQL Studio</h2>
-          </div>
-          <div className="space-x-6 hidden md:flex">
-            <a
-              href="#features"
-              className="text-muted-foreground hover:text-[#00BCD4] transition-colors font-medium"
-            >
-              Features
-            </a>
-            <a
-              href="#how-it-works"
-              className="text-muted-foreground hover:text-[#00BCD4] transition-colors font-medium"
-            >
-              How it Works
-            </a>
-            <a
-              href="#demo"
-              className="text-muted-foreground hover:text-[#00BCD4] transition-colors font-medium"
-            >
-              Demo
-            </a>
-            <a
-              href="#faq"
-              className="text-muted-foreground hover:text-[#00BCD4] transition-colors font-medium"
-            >
-              FAQ
-            </a>
-            <a
-              href="#cta"
-              className="text-muted-foreground hover:text-[#00BCD4] transition-colors font-medium"
-            >
-              Download
-            </a>
-          </div>
-          <Button variant="outline" className="md:hidden rounded-xl">
-            Menu
-          </Button>
-        </nav>
-      </header>
+      <Header />
 
       <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-4 md:px-8 bg-white pt-24 pb-12 rounded-b-3xl overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#A7D9FF] rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
@@ -436,28 +389,7 @@ const Home = () => {
         </div>
       </section>
 
-      <footer className="py-10 px-4 md:px-8 bg-card text-muted-foreground text-center border-t border-border rounded-t-2xl text-[14px]">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-          <p>
-            &copy; {new Date().getFullYear()} SQL Studio. All rights reserved.
-          </p>
-
-          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
-            <a
-              href="/privacy-policy"
-              className="hover:text-[#00BCD4] transition-colors"
-            >
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-[#00BCD4] transition-colors">
-              Terms of Service
-            </a>
-            <a href="#" className="hover:text-[#00BCD4] transition-colors">
-              Contact
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };
