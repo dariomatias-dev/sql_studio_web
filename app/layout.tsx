@@ -14,7 +14,9 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-background text-foreground antialiased selection:bg-[#00BCD4] selection:text-primary-foreground">
+        {children}
+      </body>
     </html>
   );
 };

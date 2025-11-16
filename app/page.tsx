@@ -24,7 +24,7 @@ import { Button } from "@/components/ui/button";
 
 const Home = () => {
   return (
-    <div className="bg-background text-foreground antialiased selection:bg-[#00BCD4] selection:text-primary-foreground">
+    <>
       <header className="py-2 px-4 md:px-8 bg-card shadow-sm fixed top-0 left-0 right-0 z-50 rounded-b-xl">
         <nav className="flex justify-between items-center max-w-7xl mx-auto">
           <div className="flex items-center gap-2">
@@ -458,7 +458,7 @@ const Home = () => {
           </div>
         </div>
       </footer>
-    </div>
+    </>
   );
 };
 
