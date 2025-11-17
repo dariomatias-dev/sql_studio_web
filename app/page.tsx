@@ -28,8 +28,6 @@ import {
 const Home = () => {
   return (
     <>
-      <Header />
-
       <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-4 md:px-8 bg-linear-to-br from-white via-blue-50 to-blue-100 pt-4 pb-12 rounded-b-3xl overflow-hidden shadow-lg">
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#A7D9FF] rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"></div>
         <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-[#4FC3F7] rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
@@ -369,8 +367,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 };
