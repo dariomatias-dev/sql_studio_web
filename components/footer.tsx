@@ -13,10 +13,15 @@ export const Footer = () => {
           >
             Privacy Policy
           </a>
-          <a href="#" className="hover:text-[#00BCD4] transition-colors">
+
+          <a
+            href="/terms-of-service"
+            className="hover:text-[#00BCD4] transition-colors"
+          >
             Terms of Service
           </a>
-          <a href="#" className="hover:text-[#00BCD4] transition-colors">
+
+          <a href="/contact" className="hover:text-[#00BCD4] transition-colors">
             Contact
           </a>
         </div>
