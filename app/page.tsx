@@ -44,12 +44,15 @@ const Home = () => {
             The complete mobile SQL editor for modern developers and DBAs. Power
             and flexibility in the palm of your hand, wherever you are.
           </p>
+
           <div className="flex justify-center md:justify-start">
             <Link
-              href=""
+              href="https://play.google.com/"
+              target="_blank"
               className="flex items-center gap-3 px-10 py-5 bg-linear-to-r from-[#00BCD4] to-[#00ACC1] hover:from-[#00ACC1] hover:to-[#00BCD4] text-white font-bold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out"
             >
               <FaGooglePlay className="size-10" />
+
               <div className="flex flex-col">
                 <span className="text-sm font-light">GET IT ON</span>
                 <span className="text-2xl font-normal">Google Play</span>
@@ -77,6 +80,7 @@ const Home = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12">
             Features You&apos;ll Love
           </h2>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="group bg-white p-8 rounded-xl transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-[#00BCD4]/20 border border-gray-100">
               <Code className="h-12 w-12 text-[#00BCD4] mb-4 transition-transform duration-300" />
@@ -155,6 +159,7 @@ const Home = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12">
             How It Works
           </h2>
+
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="md:w-1/2 text-left space-y-10">
               <div className="flex items-start gap-6">
@@ -171,6 +176,7 @@ const Home = () => {
                   </p>
                 </div>
               </div>
+
               <div className="flex items-start gap-6">
                 <div className="shrink-0 w-12 h-12 bg-[#00BCD4] text-white rounded-full flex items-center justify-center text-xl font-extrabold shadow-md">
                   2
@@ -185,6 +191,7 @@ const Home = () => {
                   </p>
                 </div>
               </div>
+
               <div className="flex items-start gap-6">
                 <div className="shrink-0 w-12 h-12 bg-[#00BCD4] text-white rounded-full flex items-center justify-center text-xl font-extrabold shadow-md">
                   3
@@ -228,6 +235,7 @@ const Home = () => {
             Discover why SQL Studio is the essential tool for every developer
             and DBA on the go.
           </p>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="group bg-[#F8FDFE] p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <Rocket className="h-14 w-14 text-[#00BCD4] mx-auto transition-transform duration-300 mb-4" />
@@ -284,6 +292,7 @@ const Home = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12">
             Frequently Asked Questions
           </h2>
+
           <Accordion type="single" collapsible className="w-full text-left">
             <AccordionItem value="item-1" className="border-b border-gray-200">
               <AccordionTrigger className="text-lg font-medium hover:no-underline text-gray-800 hover:text-[#00BCD4] transition-colors py-4">
@@ -295,6 +304,7 @@ const Home = () => {
                 database systems.
               </AccordionContent>
             </AccordionItem>
+
             <AccordionItem value="item-2" className="border-b border-gray-200">
               <AccordionTrigger className="text-lg font-medium hover:no-underline text-gray-800 hover:text-[#00BCD4] transition-colors py-4">
                 Is SQL Studio free?
@@ -305,6 +315,7 @@ const Home = () => {
                 unlock the full potential of the app.
               </AccordionContent>
             </AccordionItem>
+
             <AccordionItem value="item-3" className="border-b border-gray-200">
               <AccordionTrigger className="text-lg font-medium hover:no-underline text-gray-800 hover:text-[#00BCD4] transition-colors py-4">
                 How do I report a bug or request a feature?
@@ -315,6 +326,7 @@ const Home = () => {
                 support page on the website.
               </AccordionContent>
             </AccordionItem>
+
             <AccordionItem value="item-4" className="border-b border-gray-200">
               <AccordionTrigger className="text-lg font-medium hover:no-underline text-gray-800 hover:text-[#00BCD4] transition-colors py-4">
                 Does SQL Studio provide pre-filled databases for practice?
@@ -341,9 +353,11 @@ const Home = () => {
             Join thousands of developers and DBAs who trust SQL Studio for their
             mobile database needs. Download today!
           </p>
+
           <div className="flex justify-center">
             <Link
-              href={""}
+              href="https://play.google.com/"
+              target="_blank"
               className="flex items-center gap-3 px-8 py-4 bg-white hover:bg-gray-100 text-gray-900 font-extrabold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out text-lg border border-gray-300"
             >
               <FaGooglePlay className="text-gray-700 size-9" />

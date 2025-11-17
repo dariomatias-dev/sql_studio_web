@@ -37,7 +37,8 @@ export const Header = () => (
         ))}
 
         <Link
-          href="#cta"
+          href="https://play.google.com/"
+          target="_blank"
           className="px-6 py-2 bg-linear-to-r from-[#00BCD4] to-[#00ACC1] text-white font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300 ease-in-out"
         >
           Download App

@@ -136,6 +136,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .animate-blob {
   animation: blob 8s infinite ease-in-out;
 }
