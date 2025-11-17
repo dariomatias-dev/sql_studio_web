@@ -16,6 +16,7 @@ import { FaGooglePlay } from "react-icons/fa";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { ScreenshotsSection } from "@/components/screenshots-section";
 import {
   Accordion,
   AccordionContent,
@@ -211,43 +212,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section
-        id="demo"
-        className="py-20 px-4 md:px-8 bg-subtle-pattern mx-auto my-12 max-w-7xl"
-      >
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12">
-            See SQL Studio in Action
-          </h2>
-          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-            A powerful and intuitive interface, designed to maximize your
-            productivity. Explore the screenshots below!
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Image
-              src="https://raw.githubusercontent.com/dariomatias-dev/flutter_guide_app/refs/heads/main/screenshots/flutter_guide_screen_1.jpeg"
-              alt="SQL Studio Screenshot 1"
-              width={250}
-              height={500}
-              className="rounded-xl shadow-lg border-2 border-gray-100 w-full h-auto object-cover transition-transform duration-300 ease-in-out"
-            />
-            <Image
-              src="https://raw.githubusercontent.com/dariomatias-dev/flutter_guide_app/refs/heads/main/screenshots/flutter_guide_screen_1.jpeg"
-              alt="SQL Studio Screenshot 2"
-              width={250}
-              height={500}
-              className="rounded-xl shadow-lg border-2 border-gray-100 w-full h-auto object-cover transition-transform duration-300 ease-in-out"
-            />
-            <Image
-              src="https://raw.githubusercontent.com/dariomatias-dev/flutter_guide_app/refs/heads/main/screenshots/flutter_guide_screen_1.jpeg"
-              alt="SQL Studio Screenshot 3"
-              width={250}
-              height={500}
-              className="rounded-xl shadow-lg border-2 border-gray-100 w-full h-auto object-cover transition-transform duration-300 ease-in-out"
-            />
-          </div>
-        </div>
-      </section>
+      <ScreenshotsSection />
 
       <section
         id="why-choose-us"
