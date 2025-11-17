@@ -9,6 +9,7 @@ import {
   PlayCircle,
   Rocket,
   Sparkles,
+  Menu,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,26 +30,26 @@ const Home = () => {
     <>
       <Header />
 
-      <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-4 md:px-8 bg-white pt-24 pb-12 rounded-b-3xl overflow-hidden">
+      <section className="relative min-h-screen flex flex-col md:flex-row items-center justify-center px-4 md:px-8 bg-linear-to-br from-white via-blue-50 to-blue-100 pt-4 pb-12 rounded-b-3xl overflow-hidden shadow-lg">
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#A7D9FF] rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"></div>
         <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-[#4FC3F7] rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
         <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-[#03A9F4] rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-4000"></div>
 
-        <div className="relative z-10 max-w-5xl mx-auto text-center md:text-left md:w-1/2 flex flex-col items-center md:items-start p-4">
-          <h1 className="text-5xl lg:text-7xl font-extrabold text-gray-900 leading-tight mb-6 tracking-tight">
+        <div className="relative z-10 max-w-6xl mx-auto text-center md:text-left md:w-1/2 flex flex-col items-center md:items-start p-4">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight mb-6 tracking-tight drop-shadow-sm">
             SQL Studio: Your Database In Your Pocket.
             <br className="hidden md:block" /> Edit, Query, and Manage Anywhere.
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-700 mb-10 max-w-2xl mx-auto md:mx-0 leading-relaxed drop-shadow-sm">
             The complete mobile SQL editor for modern developers and DBAs. Power
             and flexibility in the palm of your hand, wherever you are.
           </p>
           <div className="flex justify-center md:justify-start">
             <Link
               href=""
-              className="flex items-center gap-3 px-8 py-4 bg-[#00BCD4] hover:bg-[#00ACC1] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
+              className="flex items-center gap-3 px-10 py-5 bg-linear-to-r from-[#00BCD4] to-[#00ACC1] hover:from-[#00ACC1] hover:to-[#00BCD4] text-white font-bold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out"
             >
-              <FaGooglePlay className="size-9" />
+              <FaGooglePlay className="size-10" />
               <div className="flex flex-col">
                 <span className="text-sm font-light">GET IT ON</span>
                 <span className="text-2xl font-normal">Google Play</span>
@@ -59,11 +60,11 @@ const Home = () => {
 
         <div className="md:w-1/2 mt-16 md:mt-0 flex justify-center items-center relative z-10 p-4">
           <Image
-            src="https://raw.githubusercontent.com/dariomatias-dev/flutter_guide_app/refs/heads/main/screenshots/flutter_guide_screen_1.jpeg"
+            src="/screenshots/screenshot_1.jpg"
             alt="SQL Studio app mockup on a smartphone"
-            width={350}
-            height={550}
-            className="rounded-3xl shadow-2xl border-4 border-white object-contain transition-transform duration-300 ease-in-out"
+            width={300}
+            height={500}
+            className="rounded-3xl shadow-2xl border-4 border-white object-contain"
           />
         </div>
       </section>
@@ -199,9 +200,10 @@ const Home = () => {
                 </div>
               </div>
             </div>
+
             <div className="md:w-1/2 flex justify-center items-center mt-12 md:mt-0">
               <Image
-                src="https://raw.githubusercontent.com/dariomatias-dev/flutter_guide_app/refs/heads/main/screenshots/flutter_guide_screen_1.jpeg"
+                src="/screenshots/screenshot_1.jpg"
                 alt="How it works app flow"
                 width={350}
                 height={550}
@@ -309,8 +311,8 @@ const Home = () => {
               </AccordionTrigger>
               <AccordionContent className="text-gray-600 py-4 leading-relaxed">
                 You can report bugs or request features directly through the
-                &quot;Contact&quot; section in the app settings, or by visiting
-                our support page on the website.
+                "Contact" section in the app settings, or by visiting our
+                support page on the website.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4" className="border-b border-gray-200">
