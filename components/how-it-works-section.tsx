@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const HowItWorksSection = () => {
   return (
-    <section className="py-32 bg-white relative overflow-hidden">
+    <section id="workflow" className="py-32 bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-cyan-50/40 via-transparent to-transparent opacity-70" />
 
       <div className="max-w-7xl mx-auto px-6 relative">

@@ -3,7 +3,7 @@ import { ScreenshotsCarousel } from "./screenshots-carousel";
 export const ScreenshotsSection = () => {
   return (
     <section
-      id="demo"
+      id="screenshots"
       className="py-20 px-4 md:px-8 bg-subtle-pattern mx-auto my-12 max-w-7xl"
     >
       <div className="max-w-7xl mx-auto text-center">
