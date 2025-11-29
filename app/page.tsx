@@ -9,7 +9,7 @@ import { CtaSection } from "@/components/cta-section";
 import { FaqSection } from "@/components/faq-section";
 import { FeaturesSection } from "@/components/features-section";
 import { HeroSection } from "@/components/hero-section";
-import { HowItWorksSection } from "@/components/how-it-works-section";
+import { WorkflowSection } from "@/components/workflow-section";
 import { ScreenshotsSection } from "@/components/screenshots-section";
 
 const Home = () => {
@@ -19,7 +19,7 @@ const Home = () => {
 
       <FeaturesSection />
 
-      <HowItWorksSection />
+      <WorkflowSection />
 
       <ScreenshotsSection />
 
