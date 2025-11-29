@@ -5,7 +5,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { FaGooglePlay } from "react-icons/fa";
+
 import { cn } from "@/lib/utils";
+import { useHeaderTransparency } from "@/context/header-transparency-context";
 
 const navLinks = [
   { href: "#features", label: "Features" },
@@ -15,16 +17,24 @@ const navLinks = [
 ];
 
 export const Header = () => {
+  const { enabled } = useHeaderTransparency();
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    if (!enabled) {
+      requestAnimationFrame(() => setScrolled(true));
+      return;
+    }
+
+    const handleScroll = () => setScrolled(window.scrollY > 0);
+
     window.addEventListener("scroll", handleScroll);
+    requestAnimationFrame(handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [enabled]);
 
   return (
     <>
@@ -39,7 +49,7 @@ export const Header = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <nav className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 group z-50">
-              <div className="relative transition-transform duration-300 group-hover:scale-105">
+              <div className="relative">
                 <Image
                   src="/icons/sql_studio.png"
                   alt="SQL Studio Logo"
