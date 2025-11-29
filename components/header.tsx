@@ -31,8 +31,8 @@ export const Header = () => {
       <header
         className={cn(
           "fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b border-transparent",
-          scrolled 
-            ? "bg-white/90 backdrop-blur-xl py-3 shadow-sm border-slate-200/50" 
+          scrolled
+            ? "bg-white/90 backdrop-blur-xl py-3 shadow-sm border-slate-200/50"
             : "bg-transparent py-6"
         )}
       >
@@ -48,10 +48,12 @@ export const Header = () => {
                   className="drop-shadow-sm"
                 />
               </div>
-              <span className={cn(
-                "text-2xl font-extrabold tracking-tight transition-colors duration-300",
-                scrolled ? "text-slate-900" : "text-white" 
-              )}>
+              <span
+                className={cn(
+                  "text-2xl font-extrabold tracking-tight transition-colors duration-300",
+                  scrolled ? "text-slate-900" : "text-white"
+                )}
+              >
                 SQL Studio<span className="text-[#00BCD4]">.</span>
               </span>
             </Link>
@@ -63,7 +65,9 @@ export const Header = () => {
                   href={href}
                   className={cn(
                     "relative px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300 hover:text-[#00BCD4]",
-                    scrolled ? "text-slate-600" : "text-slate-300 hover:text-white"
+                    scrolled
+                      ? "text-slate-600"
+                      : "text-slate-300 hover:text-white"
                   )}
                 >
                   <span className="relative z-10">{label}</span>
@@ -77,13 +81,13 @@ export const Header = () => {
                 href="https://play.google.com/"
                 target="_blank"
                 className={cn(
-                  "group relative inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5",
-                  scrolled 
-                    ? "bg-slate-900 text-white hover:bg-[#00BCD4]" 
+                  "group relative inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full overflow-hidden transition-all duration-300 hover:shadow-lg ",
+                  scrolled
+                    ? "bg-slate-900 text-white hover:bg-[#00BCD4]"
                     : "bg-white text-slate-950 hover:bg-slate-100"
                 )}
               >
-                <FaGooglePlay className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
+                <FaGooglePlay className="w-4 h-4 transition-transform duration-300 group-hover:rotate-[-15deg]" />
                 <span>Download App</span>
               </Link>
             </div>
@@ -108,7 +112,9 @@ export const Header = () => {
       <div
         className={cn(
           "fixed inset-0 z-40 bg-white/95 backdrop-blur-2xl transition-all duration-500 ease-in-out md:hidden flex flex-col justify-center items-center gap-8",
-          mobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
+          mobileMenuOpen
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-full pointer-events-none"
         )}
       >
         <div className="flex flex-col items-center space-y-6">
@@ -122,6 +128,7 @@ export const Header = () => {
               {label}
             </Link>
           ))}
+
           <Link
             href="https://play.google.com/"
             target="_blank"

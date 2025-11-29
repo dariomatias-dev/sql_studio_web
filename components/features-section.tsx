@@ -92,7 +92,10 @@ export const FeaturesSection = () => {
                 {feature.description}
               </p>
 
-              <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-[#00BCD4] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute top-4 right-4 w-2.5 h-2.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-[#00BCD4] opacity-75 animate-ping"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00BCD4]"></span>
+              </div>
             </div>
           ))}
         </div>
