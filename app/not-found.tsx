@@ -1,7 +1,20 @@
-import Link from "next/link";
+"use client";
+
 import { ArrowLeft, FileQuestion } from "lucide-react";
+import Link from "next/link";
+import { useEffect } from "react";
+
+import { useHeaderTransparency } from "@/context/header-transparency-context";
 
 const NotFoundPage = () => {
+  const { setEnabled } = useHeaderTransparency();
+
+  useEffect(() => {
+    setEnabled(false);
+
+    return () => setEnabled(true);
+  }, [setEnabled]);
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white px-6">
       <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] bg-size-[24px_24px] opacity-40" />

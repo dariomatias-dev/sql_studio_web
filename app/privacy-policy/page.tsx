@@ -1,4 +1,18 @@
+"use client";
+
+import { useEffect } from "react";
+
+import { useHeaderTransparency } from "@/context/header-transparency-context";
+
 const PrivacyPolicyPage = () => {
+  const { setEnabled } = useHeaderTransparency();
+
+  useEffect(() => {
+    setEnabled(false);
+
+    return () => setEnabled(true);
+  }, [setEnabled]);
+
   return (
     <section className="py-20 px-4 md:px-8 bg-subtle-pattern mx-auto my-8 max-w-7xl text-gray-900">
       <div className="max-w-4xl mx-auto">
