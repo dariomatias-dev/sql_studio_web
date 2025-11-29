@@ -103,37 +103,47 @@ export const ScreenshotsCarousel = () => {
         </div>
       </div>
 
-      <div className="z-20 mt-6 md:mt-10 flex max-w-[95vw] items-center gap-3 sm:gap-6 rounded-full border border-slate-200 bg-white/80 px-4 py-2 sm:px-6 sm:py-2.5 shadow-lg backdrop-blur-md">
+      <div className="z-20 mt-8 md:mt-14 flex items-center gap-3 sm:gap-4 rounded-full border border-slate-100 bg-white/80 p-1.5 sm:p-2 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-xl max-w-[90vw] sm:max-w-none">
         <button
           onClick={scrollPrev}
-          className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-all hover:bg-slate-200 hover:text-slate-900 active:scale-95"
+          className="group flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-slate-50 transition-all duration-300 hover:bg-[#00BCD4] hover:text-white active:scale-95"
+          aria-label="Previous slide"
         >
-          <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
+          <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 text-slate-400 transition-colors group-hover:text-white" />
         </button>
 
-        <div className="flex items-center gap-1.5 sm:gap-2 overflow-hidden">
+        <div className="hidden sm:flex items-center gap-2 px-2">
           {screenshots.map((_, i) => (
             <button
               key={i}
-              className="relative flex h-3 w-3 cursor-pointer items-center justify-center"
+              className="relative flex h-3 w-3 cursor-pointer items-center justify-center py-2"
               onClick={() => scrollTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
             >
               <div
-                className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
+                className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
                   i === selectedIndex
-                    ? "w-4 sm:w-6 bg-slate-800"
-                    : "w-1.5 sm:w-2 bg-slate-300 hover:bg-slate-400"
+                    ? "w-6 bg-[#00BCD4]"
+                    : "w-1.5 bg-slate-200 hover:bg-slate-300"
                 }`}
               />
             </button>
           ))}
         </div>
 
+        <div className="sm:hidden px-2 min-w-[60px] text-center">
+          <span className="text-sm font-semibold text-slate-600">
+            {selectedIndex + 1} <span className="text-slate-300 mx-1">/</span>{" "}
+            {screenshots.length}
+          </span>
+        </div>
+
         <button
           onClick={scrollNext}
-          className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-all hover:bg-slate-200 hover:text-slate-900 active:scale-95"
+          className="group flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-slate-50 transition-all duration-300 hover:bg-[#00BCD4] hover:text-white active:scale-95"
+          aria-label="Next slide"
         >
-          <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+          <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 text-slate-400 transition-colors group-hover:text-white" />
         </button>
       </div>
     </div>
