@@ -11,12 +11,11 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { CtaSection } from "@/components/cta-section";
 import { FaqSection } from "@/components/faq-section";
 import { HeroSection } from "@/components/hero-section";
 import { HowItWorksSection } from "@/components/how-it-works-section";
 import { ScreenshotsSection } from "@/components/screenshots-section";
-import Link from "next/link";
-import { FaGooglePlay } from "react-icons/fa";
 
 const Home = () => {
   return (
@@ -169,34 +168,7 @@ const Home = () => {
 
       <FaqSection />
 
-      <section
-        id="cta"
-        className="py-20 px-4 md:px-8 bg-linear-to-tr from-[#00BCD4] to-[#00ACC1] text-center rounded-3xl mx-auto my-12 max-w-7xl shadow-2xl"
-      >
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
-            Ready to Elevate Your SQL Experience?
-          </h2>
-          <p className="text-xl md:text-2xl text-white mb-12 opacity-90 leading-relaxed">
-            Join thousands of developers and DBAs who trust SQL Studio for their
-            mobile database needs. Download today!
-          </p>
-
-          <div className="flex justify-center">
-            <Link
-              href="https://play.google.com/"
-              target="_blank"
-              className="flex items-center gap-3 px-8 py-4 bg-white hover:bg-gray-100 text-gray-900 font-extrabold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out text-lg border border-gray-300"
-            >
-              <FaGooglePlay className="text-gray-700 size-9" />
-              <div className="flex flex-col items-start">
-                <span className="text-sm font-light">GET IT ON</span>
-                <span className="text-2xl font-normal">Google Play</span>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaSection />
     </>
   );
 };
