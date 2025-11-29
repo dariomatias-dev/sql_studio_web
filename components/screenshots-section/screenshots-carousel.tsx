@@ -1,52 +1,37 @@
 "use client";
 
 import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
-const screenshots: string[] = Array.from(
-  { length: 8 },
-  (_, i) => `/screenshots/screenshot_${i + 1}.jpg`
+const screenshots = Array.from(
+  { length: 12 },
+  (_, i) => `/screenshots/screenshot_${(i % 8) + 1}.jpg`
 );
 
 export const ScreenshotsCarousel = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
-  const [canScrollPrev, setCanScrollPrev] = useState<boolean>(false);
-  const [canScrollNext, setCanScrollNext] = useState<boolean>(false);
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
-  const [imageLoadingStates, setImageLoadingStates] = useState<boolean[]>(
-    Array(screenshots.length).fill(true)
-  );
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "center",
+    skipSnaps: false,
+    dragFree: false,
+  });
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
-  const onDotButtonClick = useCallback(
-    (index: number) => {
-      if (!emblaApi) return;
-      emblaApi.scrollTo(index);
-    },
+  const scrollTo = useCallback(
+    (index: number) => emblaApi?.scrollTo(index),
     [emblaApi]
   );
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
 
-    setCanScrollPrev(emblaApi.canScrollPrev());
-    setCanScrollNext(emblaApi.canScrollNext());
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
-
-  const handleImageLoad = useCallback((index: number) => {
-    setImageLoadingStates((prevStates) => {
-      const newStates = [...prevStates];
-
-      newStates[index] = false;
-
-      return newStates;
-    });
-  }, []);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -64,78 +49,91 @@ export const ScreenshotsCarousel = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col items-center py-8">
-      <div className="w-full overflow-hidden" ref={emblaRef}>
-        <div className="flex">
-          {screenshots.map((src, index) => (
-            <div
-              key={index}
-              className="min-w-0 flex-[0_0_100%] px-2 sm:flex-[0_0_50%] md:flex-[0_0_33.3333%] lg:flex-[0_0_25%]"
-            >
-              <div className="relative flex h-full max-h-[70vh] w-full items-center justify-center rounded-2xl border-0 bg-gray-50 p-0">
-                <Image
-                  src={src}
-                  alt={`SQL Studio Screenshot ${index + 1}`}
-                  width={540}
-                  height={960}
-                  onLoad={() => handleImageLoad(index)}
-                  priority={index < 4}
-                  className={`h-auto max-h-[70vh] w-auto rounded-2xl object-contain transition-opacity duration-300 border shadow-xl ${
-                    imageLoadingStates[index] ? "opacity-0" : "opacity-100"
-                  }`}
-                />
-                {imageLoadingStates[index] && (
-                  <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-white/60">
-                    <div
-                      className="h-8 w-8 animate-spin rounded-full border-2 border-solid border-gray-300 border-t-gray-900"
-                      role="status"
-                    >
-                      <span className="sr-only">Loading image...</span>
+    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden py-8 md:py-12">
+      <div className="z-10 w-full max-w-[1800px] perspective-[1000px]">
+        <div className="overflow-visible" ref={emblaRef}>
+          <div className="flex touch-pan-y items-center">
+            {screenshots.map((src, index) => {
+              const isSelected = index === selectedIndex;
+
+              return (
+                <div
+                  key={index}
+                  className="relative min-w-0 flex-[0_0_75%] px-2 sm:flex-[0_0_50%] md:flex-[0_0_35%] lg:flex-[0_0_25%] sm:px-4"
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  <div
+                    className="group relative cursor-pointer transition-all duration-500 ease-out"
+                    onClick={() => scrollTo(index)}
+                    style={{
+                      transform: isSelected
+                        ? "scale(1) translateZ(0)"
+                        : "scale(0.85) translateZ(-20px)",
+                      opacity: isSelected ? 1 : 0.4,
+                      zIndex: isSelected ? 20 : 10,
+                      filter: isSelected ? "grayscale(0%)" : "grayscale(100%)",
+                    }}
+                  >
+                    <div className="relative overflow-hidden rounded-4xl sm:rounded-4xl border-[3px] sm:border-4 border-slate-200 bg-white shadow-xl sm:shadow-2xl transition-all duration-300">
+                      <div className="relative aspect-9/21 w-full bg-slate-50">
+                        <Image
+                          src={src}
+                          alt={`Screen ${index + 1}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 75vw, (max-width: 768px) 50vw, (max-width: 1024px) 35vw, 25vw"
+                          priority={Math.abs(index - selectedIndex) < 4}
+                        />
+                        <div className="pointer-events-none absolute inset-0 bg-linear-to-tr from-white/20 to-transparent opacity-50" />
+                      </div>
                     </div>
+
+                    <div
+                      className={`absolute -bottom-6 sm:-bottom-10 left-1/2 h-4 w-3/4 -translate-x-1/2 rounded-[100%] bg-slate-400/30 blur-lg sm:blur-xl transition-all duration-500 ${
+                        isSelected
+                          ? "opacity-100 scale-100"
+                          : "opacity-0 scale-75"
+                      }`}
+                    />
                   </div>
-                )}
-              </div>
-            </div>
-          ))}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
-      <div className="mt-8 flex items-center justify-center gap-8">
+      <div className="z-20 mt-6 md:mt-10 flex max-w-[95vw] items-center gap-3 sm:gap-6 rounded-full border border-slate-200 bg-white/80 px-4 py-2 sm:px-6 sm:py-2.5 shadow-lg backdrop-blur-md">
         <button
           onClick={scrollPrev}
-          disabled={!canScrollPrev}
-          className="flex rounded-full border border-gray-300 bg-white p-2 text-gray-700 shadow-lg transition-colors duration-200 hover:bg-gray-200 hover:text-black focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40"
-          aria-label="Previous screenshot"
+          className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-all hover:bg-slate-200 hover:text-slate-900 active:scale-95"
         >
-          <ChevronLeft className="h-6 w-6" />
+          <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
 
-        <div className="flex gap-1">
-          {screenshots.map((_, index) => (
-            <div
-              key={index}
-              className="flex h-2 w-4 items-center justify-center"
+        <div className="flex items-center gap-1.5 sm:gap-2 overflow-hidden">
+          {screenshots.map((_, i) => (
+            <button
+              key={i}
+              className="relative flex h-3 w-3 cursor-pointer items-center justify-center"
+              onClick={() => scrollTo(i)}
             >
-              <button
-                onClick={() => onDotButtonClick(index)}
-                className={`h-2 cursor-pointer rounded-full transition-all duration-200 ${
-                  index === selectedIndex
-                    ? "w-4 bg-blue-500"
-                    : "w-2 bg-gray-400 hover:bg-gray-500"
+              <div
+                className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
+                  i === selectedIndex
+                    ? "w-4 sm:w-6 bg-slate-800"
+                    : "w-1.5 sm:w-2 bg-slate-300 hover:bg-slate-400"
                 }`}
-                aria-label={`Go to slide ${index + 1}`}
               />
-            </div>
+            </button>
           ))}
         </div>
 
         <button
           onClick={scrollNext}
-          disabled={!canScrollNext}
-          className="flex cursor-pointer rounded-full border border-gray-300 bg-white p-2 text-gray-700 shadow-lg transition-colors duration-200 hover:bg-gray-200 hover:text-black focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40"
-          aria-label="Next screenshot"
+          className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-all hover:bg-slate-200 hover:text-slate-900 active:scale-95"
         >
-          <ChevronRight className="h-6 w-6" />
+          <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
       </div>
     </div>
