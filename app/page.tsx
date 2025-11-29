@@ -1,18 +1,13 @@
 import {
   CheckCircle,
-  Code,
-  Database,
-  LayoutDashboard,
-  Lock,
-  Palette,
-  Play,
   PlayCircle,
   Rocket,
-  Sparkles,
+  Sparkles
 } from "lucide-react";
 
 import { CtaSection } from "@/components/cta-section";
 import { FaqSection } from "@/components/faq-section";
+import { FeaturesSection } from "@/components/features-section";
 import { HeroSection } from "@/components/hero-section";
 import { HowItWorksSection } from "@/components/how-it-works-section";
 import { ScreenshotsSection } from "@/components/screenshots-section";
@@ -22,84 +17,7 @@ const Home = () => {
     <>
       <HeroSection />
 
-      <section
-        id="features"
-        className="py-20 px-4 md:px-8 bg-subtle-pattern mx-auto my-12 max-w-7xl"
-      >
-        <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12">
-            Features You&apos;ll Love
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group bg-white p-8 rounded-xl transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-[#00BCD4]/20 border border-gray-100">
-              <Code className="h-12 w-12 text-[#00BCD4] mb-4 transition-transform duration-300" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                Smart SQL Editor
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Advanced syntax highlighting, auto-completion, and real-time
-                error checking for a seamless writing experience.
-              </p>
-            </div>
-
-            <div className="group bg-white p-8 rounded-xl transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-[#00BCD4]/20 border border-gray-100">
-              <Database className="h-12 w-12 text-[#00BCD4] mb-4 transition-transform duration-300" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                SQLite Database Support
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Connect and manage your SQLite databases with full power. Create
-                new databases directly from your device.
-              </p>
-            </div>
-
-            <div className="group bg-white p-8 rounded-xl transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-[#00BCD4]/20 border border-gray-100">
-              <Play className="h-12 w-12 text-[#00BCD4] mb-4 transition-transform duration-300" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                Execute & Visualize
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Execute your queries and get formatted results instantly.
-                Analyze data quickly with filters and ordering.
-              </p>
-            </div>
-
-            <div className="group bg-white p-8 rounded-xl transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-[#00BCD4]/20 border border-gray-100">
-              <Lock className="h-12 w-12 text-[#00BCD4] mb-4 transition-transform duration-300" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                Pre-populated Databases
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Practice your SQL skills with pre-created databases, tables, and
-                populated data ready for your queries.
-              </p>
-            </div>
-
-            <div className="group bg-white p-8 rounded-xl transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-[#00BCD4]/20 border border-gray-100">
-              <Palette className="h-12 w-12 text-[#00BCD4] mb-4 transition-transform duration-300" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                Customizable Experience
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Choose from various code themes and adjust the interface to suit
-                your workflow and visual preferences.
-              </p>
-            </div>
-
-            <div className="group bg-white p-8 rounded-xl transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-[#00BCD4]/20 border border-gray-100">
-              <LayoutDashboard className="h-12 w-12 text-[#00BCD4] mb-4 transition-transform duration-300" />
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                Schema Management
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Explore tables, views, and other database objects with an
-                intuitive interface.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <FeaturesSection />
 
       <HowItWorksSection />
 
