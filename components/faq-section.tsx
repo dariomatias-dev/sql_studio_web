@@ -1,3 +1,5 @@
+import { Plus, Minus } from "lucide-react";
+
 import {
   Accordion,
   AccordionContent,
@@ -11,86 +13,79 @@ const faqItems = [
     answer: (
       <>
         Currently, SQL Studio provides full support for{" "}
-        <strong className="text-gray-900 font-medium">SQLite</strong> databases.
-        We are continuously evaluating support for other database systems based
-        on user feedback and roadmap priorities.
+        <strong className="text-slate-900 font-semibold">SQLite</strong>{" "}
+        databases. We are continuously evaluating support for other database
+        systems based on user feedback and roadmap priorities.
       </>
     ),
   },
   {
     question: "Is SQL Studio free?",
-    answer: (
-      <>
-        SQL Studio is completely free and offers all essential features at no
-        additional cost.
-      </>
-    ),
+    answer:
+      "SQL Studio is completely free and offers all essential features at no additional cost. We believe in accessible tools for developers everywhere.",
   },
   {
     question: "How do I report a bug or request a feature?",
     answer: (
       <>
         We value your feedback! You can report bugs or request features directly
-        through the
-        <span className="text-gray-900 font-medium"> &quot;Contact&quot; </span>
-        section in the app settings, or by visiting our dedicated support page
-        on the website.
+        through the{" "}
+        <span className="text-slate-900 font-semibold">
+          &quot;Contact&quot;
+        </span>{" "}
+        section in the app settings, or by visiting our dedicated support page.
       </>
     ),
   },
   {
     question: "Does SQL Studio provide practice databases?",
-    answer: (
-      <>
-        Yes, SQL Studio comes pre-loaded with several example databases. These
-        include ready-to-use tables and populated data, making it perfect for
-        beginners to practice queries without needing to import external files.
-      </>
-    ),
+    answer:
+      "Yes, SQL Studio comes pre-loaded with several example databases. These include ready-to-use tables and populated data, making it perfect for beginners to practice queries immediately.",
   },
 ];
 
-const AccordionIcon = () => (
-  <div className="shrink-0 h-6 w-6 md:h-8 md:w-8 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center group-hover:border-[#00BCD4]/30 group-hover:bg-[#00BCD4]/5 transition-colors duration-200">
-    <div className="relative h-3 w-3 md:h-4 md:w-4">
-      <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-0.5 bg-gray-400 group-hover:bg-[#00BCD4] rounded-full transition-colors duration-200"></span>
-      <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 h-full bg-gray-400 group-hover:bg-[#00BCD4] rounded-full transition-all duration-300 ease-out group-data-[state=open]:rotate-90 group-data-[state=open]:scale-y-0"></span>
-    </div>
-  </div>
-);
-
 export const FaqSection = () => {
   return (
-    <section id="faq" className="py-16 md:py-24 px-4 bg-gray-50/50">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-10 md:mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-gray-200 text-gray-600 text-[11px] md:text-xs font-semibold tracking-wide uppercase mb-5 shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00BCD4]"></span>
-            Support
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-            Frequently Asked Questions
+    <section
+      id="faq"
+      className="relative py-24 md:py-32 px-4 bg-white overflow-hidden"
+    >
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-slate-50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-60"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#00BCD4]/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 pointer-events-none"></div>
+
+      <div className="max-w-4xl mx-auto relative z-10">
+        <div className="text-center mb-16 md:mb-20">
+          <span className="text-[#00BCD4] font-bold tracking-wider uppercase text-xs mb-3 block">
+            Common Questions
+          </span>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+            We&apos;ve got answers.
           </h2>
-          <p className="text-gray-600 text-base max-w-lg mx-auto leading-relaxed">
-            Find answers to common questions about functionality, billing, and
+          <p className="text-lg text-slate-500 max-w-xl mx-auto font-light">
+            Everything you need to know about the product and billing.
+            Can&apos;t find the answer you&apos;re looking for? Reach out to our
             support.
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="w-full space-y-3">
+        <Accordion type="single" collapsible className="w-full">
           {faqItems.map((item, index) => (
             <AccordionItem
               key={`item-${index}`}
               value={`item-${index}`}
-              className="group border border-gray-200 last:border-b bg-white rounded-lg px-2 md:px-5 transition-all duration-200 data-[state=open]:border-gray-400/50 data-[state=open]:ring-gray-200 data-[state=open]:shadow-sm"
+              className="border-b border-slate-100 last:border-0 py-2"
             >
-              <AccordionTrigger className="flex items-center justify-between w-full py-4 text-left hover:no-underline [&>svg]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00BCD4]/50 rounded-md group-data-[state=open]:text-gray-900">
-                <span className="text-base md:text-lg font-semibold text-gray-800 group-hover:text-[#00BCD4] transition-colors duration-200 pr-4">
+              <AccordionTrigger className="flex items-center justify-between w-full py-6 text-left hover:no-underline [&>svg]:hidden group">
+                <span className="text-lg md:text-xl font-medium text-slate-700 group-hover:text-[#00BCD4] transition-colors duration-300 pr-8">
                   {item.question}
                 </span>
-                <AccordionIcon />
+
+                <div className="relative flex items-center justify-center w-6 h-6 shrink-0">
+                  <Plus className="absolute w-5 h-5 text-slate-400 transition-all duration-300 group-hover:text-[#00BCD4] group-data-[state=open]:opacity-0 group-data-[state=open]:rotate-90" />
+                  <Minus className="absolute w-5 h-5 text-[#00BCD4] transition-all duration-300 opacity-0 -rotate-90 group-data-[state=open]:opacity-100 group-data-[state=open]:rotate-0" />
+                </div>
               </AccordionTrigger>
-              <AccordionContent className="text-gray-700 text-sm md:text-base pb-5 leading-7 animate-in fade-in-0 slide-in-from-top-1 duration-200">
+              <AccordionContent className="text-slate-500 text-base leading-relaxed pb-8 pr-12 animate-in slide-in-from-top-2 fade-in duration-300">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>
