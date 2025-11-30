@@ -1,34 +1,88 @@
 "use client";
 
+import emailjs from "@emailjs/browser";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
+  AlertCircle,
   AtSign,
+  CheckCircle,
   Github,
   Linkedin,
+  Loader2,
   Mail,
   MessageSquare,
   Send,
   User,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 import { useHeaderTransparency } from "@/context/header-transparency-context";
 
+const schema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.email("Invalid email address"),
+  subject: z.string().min(1, "Please select a subject"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+type FormData = z.infer<typeof schema>;
+
 const ContactPage = () => {
   const { setEnabled } = useHeaderTransparency();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      name: "",
+      email: "",
+      subject: "General Inquiry",
+      message: "",
+    },
+  });
 
   useEffect(() => {
     setEnabled(false);
-
     return () => setEnabled(true);
   }, [setEnabled]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: FormData) => {
+    setSubmitStatus("idle");
 
-    setIsSubmitting(true);
+    const serviceID = process.env.NEXT_PUBLIC_SERVICE_ID as string;
+    const templateID = process.env.NEXT_PUBLIC_TEMPLATE_ID as string;
+    const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY as string;
 
-    setTimeout(() => setIsSubmitting(false), 2000);
+    try {
+      await emailjs.send(
+        serviceID,
+        templateID,
+        {
+          subject: data.subject,
+          message: `${data.name}: ${data.message}`,
+          email: data.email,
+        },
+        publicKey
+      );
+
+      setSubmitStatus("success");
+      reset();
+
+      setTimeout(() => setSubmitStatus("idle"), 5000);
+    } catch (error) {
+      console.error("Email error:", error);
+
+      setSubmitStatus("error");
+    }
   };
 
   return (
@@ -122,7 +176,7 @@ const ContactPage = () => {
           <div className="bg-white p-8 md:p-10 rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] border border-slate-100 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110" />
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label
@@ -134,13 +188,22 @@ const ContactPage = () => {
                   <div className="relative">
                     <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
+                      {...register("name")}
                       type="text"
                       id="name"
-                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00BCD4]/50 focus:border-[#00BCD4] transition-all text-slate-900 placeholder:text-slate-400"
+                      className={`w-full pl-12 pr-4 py-3 bg-slate-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00BCD4]/50 focus:border-[#00BCD4] transition-all text-slate-900 placeholder:text-slate-400 ${
+                        errors.name
+                          ? "border-red-300 focus:border-red-500 focus:ring-red-200"
+                          : "border-slate-200"
+                      }`}
                       placeholder="Your name"
-                      required
                     />
                   </div>
+                  {errors.name && (
+                    <p className="text-xs text-red-500 mt-1">
+                      {errors.name.message}
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -153,13 +216,22 @@ const ContactPage = () => {
                   <div className="relative">
                     <AtSign className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
+                      {...register("email")}
                       type="email"
                       id="email"
-                      className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00BCD4]/50 focus:border-[#00BCD4] transition-all text-slate-900 placeholder:text-slate-400"
+                      className={`w-full pl-12 pr-4 py-3 bg-slate-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00BCD4]/50 focus:border-[#00BCD4] transition-all text-slate-900 placeholder:text-slate-400 ${
+                        errors.email
+                          ? "border-red-300 focus:border-red-500 focus:ring-red-200"
+                          : "border-slate-200"
+                      }`}
                       placeholder="you@example.com"
-                      required
                     />
                   </div>
+                  {errors.email && (
+                    <p className="text-xs text-red-500 mt-1">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -171,14 +243,20 @@ const ContactPage = () => {
                   Subject
                 </label>
                 <select
+                  {...register("subject")}
                   id="subject"
                   className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00BCD4]/50 focus:border-[#00BCD4] transition-all text-slate-900"
                 >
-                  <option>General Inquiry</option>
-                  <option>Bug Report</option>
-                  <option>Feature Request</option>
-                  <option>Feedback</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Bug Report">Bug Report</option>
+                  <option value="Feature Request">Feature Request</option>
+                  <option value="Feedback">Feedback</option>
                 </select>
+                {errors.subject && (
+                  <p className="text-xs text-red-500 mt-1">
+                    {errors.subject.message}
+                  </p>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -189,28 +267,60 @@ const ContactPage = () => {
                   Message
                 </label>
                 <textarea
+                  {...register("message")}
                   id="message"
                   rows={5}
-                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00BCD4]/50 focus:border-[#00BCD4] transition-all text-slate-900 placeholder:text-slate-400 resize-none"
+                  className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00BCD4]/50 focus:border-[#00BCD4] transition-all text-slate-900 placeholder:text-slate-400 resize-none ${
+                    errors.message
+                      ? "border-red-300 focus:border-red-500 focus:ring-red-200"
+                      : "border-slate-200"
+                  }`}
                   placeholder="How can we help you?"
-                  required
                 ></textarea>
+                {errors.message && (
+                  <p className="text-xs text-red-500 mt-1">
+                    {errors.message.message}
+                  </p>
+                )}
               </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full group inline-flex items-center justify-center gap-2 px-6 py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-[#00BCD4] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? (
-                  <span>Sending...</span>
-                ) : (
-                  <>
-                    <span>Send Message</span>
-                    <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </>
+              <div className="flex flex-col gap-4">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full group inline-flex items-center justify-center gap-2 px-6 py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-[#00BCD4] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <span>Sending...</span>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      <span>Send Message</span>
+                      <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </button>
+
+                {submitStatus === "success" && (
+                  <div className="flex items-center justify-center gap-2 text-emerald-600 bg-emerald-50 p-3 rounded-lg border border-emerald-100 animate-in fade-in slide-in-from-top-2">
+                    <CheckCircle className="w-5 h-5" />
+                    <span className="text-sm font-medium">
+                      Message sent successfully!
+                    </span>
+                  </div>
                 )}
-              </button>
+
+                {submitStatus === "error" && (
+                  <div className="flex items-center justify-center gap-2 text-red-600 bg-red-50 p-3 rounded-lg border border-red-100 animate-in fade-in slide-in-from-top-2">
+                    <AlertCircle className="w-5 h-5" />
+                    <span className="text-sm font-medium">
+                      Failed to send. Please try again.
+                    </span>
+                  </div>
+                )}
+              </div>
             </form>
           </div>
         </div>
