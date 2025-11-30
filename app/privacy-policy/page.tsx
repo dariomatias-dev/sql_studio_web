@@ -1,5 +1,6 @@
 "use client";
 
+import { Calendar, Shield } from "lucide-react";
 import { useEffect } from "react";
 
 import { useHeaderTransparency } from "@/context/header-transparency-context";
@@ -9,203 +10,251 @@ const PrivacyPolicyPage = () => {
 
   useEffect(() => {
     setEnabled(false);
-
     return () => setEnabled(true);
   }, [setEnabled]);
 
   return (
-    <section className="py-20 px-4 md:px-8 bg-subtle-pattern mx-auto my-8 max-w-7xl text-gray-900">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center">
-          Privacy Policy
-        </h1>
+    <section className="relative min-h-screen bg-white pt-32 pb-24 overflow-hidden">
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-slate-50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#00BCD4]/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 pointer-events-none"></div>
 
-        <p className="text-gray-600 leading-relaxed mb-6">
-          This privacy policy applies to the SQL Studio app (hereby referred to
-          as &quot;Application&quot;) for mobile devices that was created by
-          Dário Matias (hereby referred to as &quot;Service Provider&quot;) as a
-          Free service. This service is intended for use &quot;AS IS&quot;.
-        </p>
+      <div className="relative z-10 max-w-3xl mx-auto px-6">
+        <div className="text-center mb-16 border-b border-slate-100 pb-12">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#00BCD4]/5 text-[#00BCD4] mb-6 ring-1 ring-[#00BCD4]/20">
+            <Shield className="w-6 h-6" />
+          </div>
 
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4 mt-8">
-          Information Collection and Use
-        </h2>
-        <p className="text-gray-600 leading-relaxed mb-4">
-          The Application collects information when you download and use it.
-          This information may include information such as:
-        </p>
-        <ul className="list-disc list-inside text-gray-600 leading-relaxed space-y-2 mb-6 ml-4">
-          <li>
-            Your device&apos;s Internet Protocol address (e.g. IP address)
-          </li>
-          <li>
-            The pages of the Application that you visit, the time and date of
-            your visit, the time spent on those pages
-          </li>
-          <li>The time spent on the Application</li>
-          <li>The operating system you use on your mobile device</li>
-        </ul>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+            Privacy Policy
+          </h1>
 
-        <p className="text-gray-600 leading-relaxed mb-6">
-          The Application does not gather precise information about the location
-          of your mobile device.
-        </p>
+          <div className="items-center justify-center gap-2 text-slate-500 text-sm font-medium bg-slate-50 inline-flex px-4 py-2 rounded-full">
+            <Calendar className="w-4 h-4" />
+            <span>Last Updated: November 20, 2025</span>
+          </div>
+        </div>
 
-        <p className="text-gray-600 leading-relaxed mb-6">
-          The Service Provider may use the information you provided to contact
-          you from time to time to provide you with important information,
-          required notices and marketing promotions.
-        </p>
+        <div className="prose prose-slate prose-lg max-w-none text-slate-600">
+          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 mb-10 text-sm md:text-base">
+            <p className="mb-0">
+              This privacy policy applies to the{" "}
+              <strong className="text-slate-900">SQL Studio app</strong> (hereby
+              referred to as &quot;Application&quot;) for mobile devices that
+              was created by
+              <strong className="text-slate-900"> Dário Matias</strong> (hereby
+              referred to as &quot;Service Provider&quot;) as a Free service.
+              This service is intended for use &quot;AS IS&quot;.
+            </p>
+          </div>
 
-        <p className="text-gray-600 leading-relaxed mb-6">
-          For a better experience, while using the Application, the Service
-          Provider may require you to provide us with certain personally
-          identifiable information. The information that the Service Provider
-          request will be retained by them and used as described in this privacy
-          policy.
-        </p>
+          <div className="space-y-12">
+            <section>
+              <h2 className="flex items-center gap-3 text-2xl font-bold text-slate-900 mb-4">
+                Information Collection and Use
+              </h2>
+              <p className="leading-relaxed mb-4">
+                The Application collects information when you download and use
+                it. This information may include information such as:
+              </p>
+              <ul className="space-y-3 my-6 pl-2">
+                {[
+                  "Your device's Internet Protocol address (e.g. IP address)",
+                  "The pages of the Application that you visit, the time and date of your visit, the time spent on those pages",
+                  "The time spent on the Application",
+                  "The operating system you use on your mobile device",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#00BCD4] shrink-0"></div>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="leading-relaxed mb-4 p-4 bg-slate-50 rounded-xl border border-slate-100 text-slate-700 text-sm">
+                The Application does not gather precise information about the
+                location of your mobile device.
+              </p>
+              <p className="leading-relaxed mb-4">
+                The Service Provider may use the information you provided to
+                contact you from time to time to provide you with important
+                information, required notices and marketing promotions.
+              </p>
+              <p className="leading-relaxed">
+                For a better experience, while using the Application, the
+                Service Provider may require you to provide us with certain
+                personally identifiable information. The information that the
+                Service Provider request will be retained by them and used as
+                described in this privacy policy.
+              </p>
+            </section>
 
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4 mt-8">
-          Third Party Access
-        </h2>
-        <p className="text-gray-600 leading-relaxed mb-4">
-          Only aggregated, anonymized data is periodically transmitted to
-          external services to aid the Service Provider in improving the
-          Application and their service. The Service Provider may share your
-          information with third parties in the ways that are described in this
-          privacy statement.
-        </p>
+            <section>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                Third Party Access
+              </h2>
+              <p className="leading-relaxed mb-4">
+                Only aggregated, anonymized data is periodically transmitted to
+                external services to aid the Service Provider in improving the
+                Application and their service. The Service Provider may share
+                your information with third parties in the ways that are
+                described in this privacy statement.
+              </p>
+              <p className="leading-relaxed mb-4">
+                The Service Provider may disclose User Provided and
+                Automatically Collected Information:
+              </p>
+              <ul className="space-y-3 my-6 pl-2">
+                <li className="flex items-start gap-3">
+                  <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0"></div>
+                  <span>
+                    As required by law, such as to comply with a subpoena, or
+                    similar legal process;
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0"></div>
+                  <span>
+                    When they believe in good faith that disclosure is necessary
+                    to protect their rights, protect your safety or the safety
+                    of others, investigate fraud, or respond to a government
+                    request;
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0"></div>
+                  <span>
+                    With their trusted services providers who work on their
+                    behalf, do not have an independent use of the information we
+                    disclose to them, and have agreed to adhere to the rules set
+                    forth in this privacy statement.
+                  </span>
+                </li>
+              </ul>
+            </section>
 
-        <p className="text-gray-600 leading-relaxed mb-4">
-          The Service Provider may disclose User Provided and Automatically
-          Collected Information:
-        </p>
-        <ul className="list-disc list-inside text-gray-600 leading-relaxed space-y-2 mb-6 ml-4">
-          <li>
-            as required by law, such as to comply with a subpoena, or similar
-            legal process;
-          </li>
-          <li>
-            when they believe in good faith that disclosure is necessary to
-            protect their rights, protect your safety or the safety of others,
-            investigate fraud, or respond to a government request;
-          </li>
-          <li>
-            with their trusted services providers who work on their behalf, do
-            not have an independent use of the information we disclose to them,
-            and have agreed to adhere to the rules set forth in this privacy
-            statement.
-          </li>
-        </ul>
+            <section>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                Opt-Out Rights
+              </h2>
+              <p className="leading-relaxed">
+                You can stop all collection of information by the Application
+                easily by uninstalling it. You may use the standard uninstall
+                processes as may be available as part of your mobile device or
+                via the mobile application marketplace or network.
+              </p>
+            </section>
 
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4 mt-8">
-          Opt-Out Rights
-        </h2>
-        <p className="text-gray-600 leading-relaxed mb-6">
-          You can stop all collection of information by the Application easily
-          by uninstalling it. You may use the standard uninstall processes as
-          may be available as part of your mobile device or via the mobile
-          application marketplace or network.
-        </p>
+            <section>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                Data Retention Policy
+              </h2>
+              <p className="leading-relaxed">
+                The Service Provider will retain User Provided data for as long
+                as you use the Application and for a reasonable time thereafter.
+                If you&apos;d like them to delete User Provided Data that you
+                have provided via the Application, please contact them at{" "}
+                <a
+                  href="mailto:matiasdario75@gmail.com"
+                  className="font-medium text-[#00BCD4] hover:text-[#00ACC1] hover:underline underline-offset-4 decoration-2"
+                >
+                  matiasdario75@gmail.com
+                </a>{" "}
+                and they will respond in a reasonable time.
+              </p>
+            </section>
 
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4 mt-8">
-          Data Retention Policy
-        </h2>
-        <p className="text-gray-600 leading-relaxed mb-6">
-          The Service Provider will retain User Provided data for as long as you
-          use the Application and for a reasonable time thereafter. If
-          you&apos;d like them to delete User Provided Data that you have
-          provided via the Application, please contact them at{" "}
-          <a
-            href="mailto:matiasdario75@gmail.com"
-            className="text-[#00BCD4] hover:underline"
-          >
-            matiasdario75@gmail.com
-          </a>{" "}
-          and they will respond in a reasonable time.
-        </p>
+            <section>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                Children
+              </h2>
+              <p className="leading-relaxed mb-4">
+                The Service Provider does not use the Application to knowingly
+                solicit data from or market to children under the age of 13.
+              </p>
+              <p className="leading-relaxed">
+                The Service Provider does not knowingly collect personally
+                identifiable information from children. The Service Provider
+                encourages all children to never submit any personally
+                identifiable information through the Application and/or
+                Services. The Service Provider encourage parents and legal
+                guardians to monitor their children&apos;s Internet usage and to
+                help enforce this Policy by instructing their children never to
+                provide personally identifiable information through the
+                Application and/or Services without their permission. If you
+                have reason to believe that a child has provided personally
+                identifiable information to the Service Provider through the
+                Application and/or Services, please contact the Service Provider
+                (
+                <a
+                  href="mailto:matiasdario75@gmail.com"
+                  className="font-medium text-[#00BCD4] hover:text-[#00ACC1] hover:underline underline-offset-4 decoration-2"
+                >
+                  matiasdario75@gmail.com
+                </a>
+                ) so that they will be able to take the necessary actions. You
+                must also be at least 16 years of age to consent to the
+                processing of your personally identifiable information in your
+                country (in some countries we may allow your parent or guardian
+                to do so on your behalf).
+              </p>
+            </section>
 
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4 mt-8">
-          Children
-        </h2>
-        <p className="text-gray-600 leading-relaxed mb-4">
-          The Service Provider does not use the Application to knowingly solicit
-          data from or market to children under the age of 13.
-        </p>
-        <p className="text-gray-600 leading-relaxed mb-6">
-          The Service Provider does not knowingly collect personally
-          identifiable information from children. The Service Provider
-          encourages all children to never submit any personally identifiable
-          information through the Application and/or Services. The Service
-          Provider encourage parents and legal guardians to monitor their
-          children&apos;s Internet usage and to help enforce this Policy by
-          instructing their children never to provide personally identifiable
-          information through the Application and/or Services without their
-          permission. If you have reason to believe that a child has provided
-          personally identifiable information to the Service Provider through
-          the Application and/or Services, please contact the Service Provider (
-          <a
-            href="mailto:matiasdario75@gmail.com"
-            className="text-[#00BCD4] hover:underline"
-          >
-            matiasdario75@gmail.com
-          </a>
-          ) so that they will be able to take the necessary actions. You must
-          also be at least 16 years of age to consent to the processing of your
-          personally identifiable information in your country (in some countries
-          we may allow your parent or guardian to do so on your behalf).
-        </p>
+            <section>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                Security
+              </h2>
+              <p className="leading-relaxed">
+                The Service Provider is concerned about safeguarding the
+                confidentiality of your information. The Service Provider
+                provides physical, electronic, and procedural safeguards to
+                protect information the Service Provider processes and
+                maintains.
+              </p>
+            </section>
 
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4 mt-8">
-          Security
-        </h2>
-        <p className="text-gray-600 leading-relaxed mb-6">
-          The Service Provider is concerned about safeguarding the
-          confidentiality of your information. The Service Provider provides
-          physical, electronic, and procedural safeguards to protect information
-          the Service Provider processes and maintains.
-        </p>
+            <section>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                Changes
+              </h2>
+              <p className="leading-relaxed mb-4">
+                This Privacy Policy may be updated from time to time for any
+                reason. The Service Provider will notify you of any changes to
+                the Privacy Policy by updating this page with the new Privacy
+                Policy. You are advised to consult this Privacy Policy regularly
+                for any changes, as continued use is deemed approval of all
+                changes.
+              </p>
+            </section>
 
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4 mt-8">
-          Changes
-        </h2>
-        <p className="text-gray-600 leading-relaxed mb-6">
-          This Privacy Policy may be updated from time to time for any reason.
-          The Service Provider will notify you of any changes to the Privacy
-          Policy by updating this page with the new Privacy Policy. You are
-          advised to consult this Privacy Policy regularly for any changes, as
-          continued use is deemed approval of all changes.
-        </p>
+            <section>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                Your Consent
+              </h2>
+              <p className="leading-relaxed">
+                By using the Application, you are consenting to the processing
+                of your information as set forth in this Privacy Policy now and
+                as amended by us.
+              </p>
+            </section>
 
-        <p className="text-gray-600 leading-relaxed mb-6">
-          This privacy policy is effective as of{" "}
-          <span className="font-semibold">2025-11-20</span>
-        </p>
-
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4 mt-8">
-          Your Consent
-        </h2>
-        <p className="text-gray-600 leading-relaxed mb-6">
-          By using the Application, you are consenting to the processing of your
-          information as set forth in this Privacy Policy now and as amended by
-          us.
-        </p>
-
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4 mt-8">
-          Contact Us
-        </h2>
-        <p className="text-gray-600 leading-relaxed mb-6">
-          If you have any questions regarding privacy while using the
-          Application, or have questions about the practices, please contact the
-          Service Provider via email at{" "}
-          <a
-            href="mailto:matiasdario75@gmail.com"
-            className="text-[#00BCD4] hover:underline"
-          >
-            matiasdario75@gmail.com
-          </a>
-          .
-        </p>
+            <section>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                Contact Us
+              </h2>
+              <p className="leading-relaxed">
+                If you have any questions regarding privacy while using the
+                Application, or have questions about the practices, please
+                contact the Service Provider via email at{" "}
+                <a
+                  href="mailto:matiasdario75@gmail.com"
+                  className="font-medium text-[#00BCD4] hover:text-[#00ACC1] hover:underline underline-offset-4 decoration-2"
+                >
+                  matiasdario75@gmail.com
+                </a>
+                .
+              </p>
+            </section>
+          </div>
+        </div>
       </div>
     </section>
   );
