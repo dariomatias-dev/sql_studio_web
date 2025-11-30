@@ -1,4 +1,4 @@
-import { Plus, Minus } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 
 import {
   Accordion,
@@ -21,8 +21,13 @@ const faqItems = [
   },
   {
     question: "Is SQL Studio free?",
-    answer:
-      "SQL Studio is completely free and offers all essential features at no additional cost. We believe in accessible tools for developers everywhere.",
+    answer: (
+      <>
+        SQL Studio is completely free and offers all essential features at no
+        additional cost. We believe in accessible tools for developers
+        everywhere.
+      </>
+    ),
   },
   {
     question: "How do I report a bug or request a feature?",
@@ -30,17 +35,25 @@ const faqItems = [
       <>
         We value your feedback! You can report bugs or request features directly
         through the{" "}
-        <span className="text-slate-900 font-semibold">
+        <a
+          href="/contact"
+          className="text-slate-900 font-semibold hover:text-[#00BCD4] transition-colors duration-300"
+        >
           &quot;Contact&quot;
-        </span>{" "}
+        </a>{" "}
         section in the app settings, or by visiting our dedicated support page.
       </>
     ),
   },
   {
     question: "Does SQL Studio provide practice databases?",
-    answer:
-      "Yes, SQL Studio comes pre-loaded with several example databases. These include ready-to-use tables and populated data, making it perfect for beginners to practice queries immediately.",
+    answer: (
+      <>
+        Yes, SQL Studio comes pre-loaded with several example databases. These
+        include ready-to-use tables and populated data, making it perfect for
+        beginners to practice queries immediately.
+      </>
+    ),
   },
 ];
 
@@ -62,9 +75,8 @@ export const FaqSection = () => {
             We&apos;ve got answers.
           </h2>
           <p className="text-lg text-slate-500 max-w-xl mx-auto font-light">
-            Everything you need to know about the product and billing.
-            Can&apos;t find the answer you&apos;re looking for? Reach out to our
-            support.
+            Everything you need to know about the app. Didn&apos;t find the
+            answer you were looking for? Contact our support team.
           </p>
         </div>
 

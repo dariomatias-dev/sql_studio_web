@@ -1,9 +1,9 @@
 import {
+  ArrowRight,
+  CheckCircle2,
   Database,
   Download,
   Terminal,
-  CheckCircle2,
-  ArrowRight,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -26,7 +26,7 @@ const steps = [
     icon: Terminal,
     title: "Start Querying",
     description:
-      "Write SQL with our smart editor. Execute queries, visualize results in tables, and export data with a single tap.",
+      "Write SQL with our intelligent editor. Execute queries and view the results in a table with a single tap.",
     color: "from-teal-400 to-emerald-400",
   },
 ];
