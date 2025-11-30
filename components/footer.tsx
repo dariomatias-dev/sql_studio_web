@@ -165,9 +165,6 @@ export const Footer = () => {
               ))}
             </div>
           </div>
-          Se quiser, posso também extrair a classe repetida para uma variável
-          para deixar ainda mais enxuto. Quer que eu faça isso? Is this
-          conversation helpful so far?
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm border-t border-white/5 pt-10">

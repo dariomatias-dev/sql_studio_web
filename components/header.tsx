@@ -17,10 +17,16 @@ const navLinks = [
 ];
 
 export const Header = () => {
-  const { enabled } = useHeaderTransparency();
+  const { enabled, setEnabled } = useHeaderTransparency();
 
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+
+    setEnabled(!mobileMenuOpen);
+  }, [mobileMenuOpen, setEnabled]);
 
   useEffect(() => {
     if (!enabled) {
