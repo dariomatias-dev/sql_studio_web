@@ -1,31 +1,63 @@
 "use client";
 
+import emailjs from "@emailjs/browser";
+import {
+  AlertCircle,
+  ArrowRight,
+  CheckCircle2,
+  Loader2,
+  Mail,
+} from "lucide-react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaGooglePlay } from "react-icons/fa";
-import { Mail, CheckCircle2, Loader2, ArrowRight } from "lucide-react";
 
 import { useHeaderTransparency } from "@/context/header-transparency-context";
+
+enum Status {
+  Idle,
+  Submitting,
+  Success,
+  Error,
+}
 
 const DownloadBetaPage = () => {
   const { setEnabled } = useHeaderTransparency();
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">(
-    "idle"
-  );
+  const [status, setStatus] = useState<Status>(Status.Idle);
 
   useEffect(() => {
     setEnabled(false);
     return () => setEnabled(true);
   }, [setEnabled]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("submitting");
+    setStatus(Status.Submitting);
 
-    setTimeout(() => {
-      setStatus("success");
-    }, 2000);
+    const serviceID = process.env.NEXT_PUBLIC_SERVICE_ID as string;
+    const templateID = process.env.NEXT_PUBLIC_TEMPLATE_ID as string;
+    const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY as string;
+
+    try {
+      await emailjs.send(
+        serviceID,
+        templateID,
+        {
+          subject: "Beta Access Request",
+          message: `Requesting beta access for Google Play email: ${email}`,
+          email: email,
+          name: "Beta Candidate",
+        },
+        publicKey
+      );
+
+      setStatus(Status.Success);
+    } catch (error) {
+      console.error("Beta request failed:", error);
+      setStatus(Status.Error);
+      setTimeout(() => setStatus(Status.Idle), 4000);
+    }
   };
 
   return (
@@ -62,7 +94,7 @@ const DownloadBetaPage = () => {
           <div className="bg-white rounded-[1.4rem] p-8 md:p-10 border border-slate-100 relative overflow-hidden">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-linear-to-r from-transparent via-[#00BCD4]/30 to-transparent"></div>
 
-            {status === "success" ? (
+            {status == Status.Success ? (
               <div className="text-center animate-in fade-in zoom-in duration-500">
                 <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 border border-emerald-100 shadow-[0_0_30px_-10px_rgba(16,185,129,0.2)]">
                   <CheckCircle2 className="w-10 h-10 text-emerald-500" />
@@ -133,25 +165,36 @@ const DownloadBetaPage = () => {
                   </p>
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={status === "submitting"}
-                  className="group relative w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed overflow-hidden shadow-lg shadow-slate-200"
-                >
-                  <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] animate-[shine_2s_infinite]"></div>
+                <div className="flex flex-col gap-3">
+                  <button
+                    type="submit"
+                    disabled={status == Status.Submitting}
+                    className="group relative w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed overflow-hidden shadow-lg shadow-slate-200"
+                  >
+                    <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] animate-[shine_2s_infinite]"></div>
 
-                  {status === "submitting" ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      <span>Processing...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Join Beta Waitlist</span>
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </>
+                    {status == Status.Submitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        <span>Processing...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Join Beta Waitlist</span>
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </>
+                    )}
+                  </button>
+
+                  {status === Status.Error && (
+                    <div className="flex items-center justify-center gap-2 text-red-600 bg-red-50 p-3 rounded-xl border border-red-100 animate-in fade-in slide-in-from-top-2">
+                      <AlertCircle className="w-5 h-5" />
+                      <span className="text-sm font-medium">
+                        Failed to send request. Please try again.
+                      </span>
+                    </div>
                   )}
-                </button>
+                </div>
               </form>
             )}
           </div>
