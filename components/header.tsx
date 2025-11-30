@@ -94,8 +94,7 @@ export const Header = () => {
 
             <div className="hidden md:flex items-center gap-4">
               <Link
-                href="https://play.google.com/"
-                target="_blank"
+                href="/download"
                 className={cn(
                   "group relative inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full overflow-hidden transition-all duration-300 hover:shadow-lg ",
                   scrolled
@@ -146,8 +145,7 @@ export const Header = () => {
           ))}
 
           <Link
-            href="https://play.google.com/"
-            target="_blank"
+            href="/download"
             onClick={() => setMobileMenuOpen(false)}
             className="mt-4 px-8 py-3 bg-[#00BCD4] text-white text-lg font-bold rounded-full shadow-lg shadow-[#00BCD4]/30 inline-flex items-center gap-2"
           >

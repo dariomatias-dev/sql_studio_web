@@ -52,8 +52,8 @@ export const Footer = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
               </span>
-              <span className="text-xs font-bold text-zinc-300 tracking-wider uppercase">
-                Stable Release v0.1.x
+              <span className="text-xs font-bold text-zinc-300 tracking-wider">
+                <span className="uppercase">Stable Release</span> v0.1.x
               </span>
             </div>
           </div>

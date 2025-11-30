@@ -52,7 +52,7 @@ export const HeroSection = () => {
 
         <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center">
           <Link
-            href="#download"
+            href="/download"
             className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-black font-bold text-lg rounded-2xl overflow-hidden shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] hover:scale-[1.02] transition-all duration-300"
           >
             <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-zinc-300/30 to-transparent skew-x-[-25deg] animate-[shine_3s_infinite]" />
