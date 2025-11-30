@@ -4,7 +4,7 @@ export const ScreenshotsSection = () => {
   return (
     <section
       id="screenshots"
-      className="relative py-24 md:py-32 bg-white overflow-hidden"
+      className="relative pt-24 md:pt-32 bg-white overflow-hidden"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-96 bg-[#00BCD4]/5 blur-[120px] rounded-full pointer-events-none" />
 

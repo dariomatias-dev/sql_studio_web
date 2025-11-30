@@ -84,7 +84,7 @@ export const Footer = () => {
               {["Features", "Screenshots", "Workflow", "FAQ"].map((item) => (
                 <li key={item}>
                   <Link
-                    href={`#${item.toLowerCase()}`}
+                    href={`/#${item.toLowerCase()}`}
                     className="group flex items-center text-zinc-400 hover:text-[#00BCD4] transition-colors duration-200"
                   >
                     <FaChevronRight className="w-0 h-2.5 mr-0 opacity-0 group-hover:w-2.5 group-hover:mr-2 group-hover:opacity-100 transition-all duration-300 text-[#00BCD4]" />

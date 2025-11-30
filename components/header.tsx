@@ -1,19 +1,19 @@
 "use client";
 
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
 import { FaGooglePlay } from "react-icons/fa";
 
-import { cn } from "@/lib/utils";
 import { useHeaderTransparency } from "@/context/header-transparency-context";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "#features", label: "Features" },
-  { href: "#workflow", label: "Workflow" },
-  { href: "#screenshots", label: "Screenshots" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#features", label: "Features" },
+  { href: "/#workflow", label: "Workflow" },
+  { href: "/#screenshots", label: "Screenshots" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export const Header = () => {
