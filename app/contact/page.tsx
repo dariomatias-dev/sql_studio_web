@@ -1,6 +1,5 @@
 "use client";
 
-import emailjs from "@emailjs/browser";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   AlertCircle,
@@ -19,6 +18,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 import { useHeaderTransparency } from "@/context/header-transparency-context";
+import { EmailData, sendEmail } from "@/utils/send-email";
 
 const schema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -29,11 +29,17 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
+enum SubmitStatus {
+  Idle,
+  Success,
+  Error,
+}
+
 const ContactPage = () => {
   const { setEnabled } = useHeaderTransparency();
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(
+    SubmitStatus.Idle
+  );
 
   const {
     register,
@@ -55,33 +61,25 @@ const ContactPage = () => {
     return () => setEnabled(true);
   }, [setEnabled]);
 
-  const onSubmit = async (data: FormData) => {
-    setSubmitStatus("idle");
-
-    const serviceID = process.env.NEXT_PUBLIC_SERVICE_ID as string;
-    const templateID = process.env.NEXT_PUBLIC_TEMPLATE_ID as string;
-    const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY as string;
+  const onSubmit = async (value: FormData) => {
+    setSubmitStatus(SubmitStatus.Idle);
 
     try {
-      await emailjs.send(
-        serviceID,
-        templateID,
-        {
-          subject: data.subject,
-          message: `${data.name}: ${data.message}`,
-          email: data.email,
-        },
-        publicKey
-      );
+      const data: EmailData = {
+        email: value.email,
+        subject: value.subject,
+        message: `${value.name}: ${value.message}`,
+      };
 
-      setSubmitStatus("success");
+      await sendEmail(data);
+
+      setSubmitStatus(SubmitStatus.Success);
+
       reset();
 
-      setTimeout(() => setSubmitStatus("idle"), 5000);
-    } catch (error) {
-      console.error("Email error:", error);
-
-      setSubmitStatus("error");
+      setTimeout(() => setSubmitStatus(SubmitStatus.Idle), 5000);
+    } catch {
+      setSubmitStatus(SubmitStatus.Error);
     }
   };
 
@@ -303,7 +301,7 @@ const ContactPage = () => {
                   )}
                 </button>
 
-                {submitStatus === "success" && (
+                {submitStatus == SubmitStatus.Success && (
                   <div className="flex items-center justify-center gap-2 text-emerald-600 bg-emerald-50 p-3 rounded-lg border border-emerald-100 animate-in fade-in slide-in-from-top-2">
                     <CheckCircle className="w-5 h-5" />
                     <span className="text-sm font-medium">
@@ -312,7 +310,7 @@ const ContactPage = () => {
                   </div>
                 )}
 
-                {submitStatus === "error" && (
+                {submitStatus == SubmitStatus.Error && (
                   <div className="flex items-center justify-center gap-2 text-red-600 bg-red-50 p-3 rounded-lg border border-red-100 animate-in fade-in slide-in-from-top-2">
                     <AlertCircle className="w-5 h-5" />
                     <span className="text-sm font-medium">
