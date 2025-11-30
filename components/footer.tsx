@@ -24,11 +24,11 @@ export const Footer = () => {
 
   return (
     <footer className="relative bg-black pt-24 pb-12 overflow-hidden border-t border-white/10">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-20"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-20" />
 
-      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#00BCD4]/40 to-transparent shadow-[0_0_15px_rgba(0,188,212,0.5)]"></div>
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#00BCD4]/40 to-transparent shadow-[0_0_15px_rgba(0,188,212,0.5)]" />
 
-      <div className="absolute -top-[300px] left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#00BCD4]/10 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute -top-[300px] left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#00BCD4]/10 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row justify-between items-start mb-20 gap-10">
@@ -49,8 +49,8 @@ export const Footer = () => {
 
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-zinc-900/50 border border-white/10 backdrop-blur-md transition-colors hover:border-[#00BCD4]/30 cursor-default">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
               </span>
               <span className="text-xs font-bold text-zinc-300 tracking-wider uppercase">
                 Stable Release v0.1.x
@@ -62,7 +62,7 @@ export const Footer = () => {
             onClick={scrollToTop}
             className="group relative flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-zinc-900/40 border border-white/10 backdrop-blur-md overflow-hidden hover:border-[#00BCD4]/30 hover:shadow-[0_0_30px_-10px_rgba(0,188,212,0.15)] transition-all duration-300"
           >
-            <div className="absolute inset-0 bg-linear-to-r from-[#00BCD4]/0 via-[#00BCD4]/5 to-[#00BCD4]/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-[#00BCD4]/0 via-[#00BCD4]/5 to-[#00BCD4]/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
             <span className="text-sm font-medium text-zinc-300 group-hover:text-white relative z-10">
               Back to Top
             </span>
@@ -156,7 +156,7 @@ export const Footer = () => {
                   }
                   className="group flex items-center justify-center w-11 h-11 rounded-xl bg-zinc-900 border border-white/5 text-zinc-400 hover:text-[#00BCD4] hover:border-[#00BCD4]/30 hover:bg-[#00BCD4]/10 hover:shadow-[0_0_20px_-5px_rgba(0,188,212,0.2)] transition-all duration-300 relative overflow-hidden"
                 >
-                  <div className="absolute inset-0 bg-linear-to-tr from-[#00BCD4]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-linear-to-tr from-[#00BCD4]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <Icon
                     size={20}
                     className="group-hover:scale-110 transition-transform relative z-10"

@@ -9,25 +9,25 @@ export const CtaSection = () => {
       className="relative w-full py-20 md:py-32 bg-black overflow-hidden flex flex-col justify-center items-center"
     >
       <div className="absolute inset-0 w-full h-full pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
 
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-[#00BCD4]/10 blur-[100px] rounded-full mix-blend-screen opacity-50 animate-pulse-slow"></div>
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-900/10 blur-[120px] rounded-full mix-blend-screen opacity-30 animate-pulse-slow"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-[#00BCD4]/10 blur-[100px] rounded-full mix-blend-screen opacity-50 animate-pulse-slow" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-900/10 blur-[120px] rounded-full mix-blend-screen opacity-30 animate-pulse-slow" />
       </div>
 
-      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#00BCD4]/20 to-transparent"></div>
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#00BCD4]/20 to-transparent" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <div className="inline-flex items-center gap-x-3 rounded-full border border-white/10 bg-zinc-900/40 p-1.5 pl-2 pr-4 shadow-lg shadow-[#00BCD4]/5 ring-1 ring-white/5 backdrop-blur-xl mb-8 transition-all hover:bg-zinc-900/60 hover:border-white/20 hover:ring-white/10 cursor-default">
           <span className="flex items-center justify-center rounded-full bg-[#00BCD4]/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#00BCD4] ring-1 ring-inset ring-[#00BCD4]/20">
             Beta
           </span>
-          <div className="h-4 w-px bg-white/10"></div>
+          <div className="h-4 w-px bg-white/10" />
           <span className="flex items-center gap-2 text-sm font-medium text-zinc-300 font-mono tracking-tight">
             v0.1.x
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00BCD4] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00BCD4]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00BCD4] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00BCD4]" />
             </span>
           </span>
         </div>
@@ -66,7 +66,7 @@ export const CtaSection = () => {
               <ShieldCheck className="w-4 h-4 text-[#00BCD4]" />
               No account required
             </span>
-            <span className="hidden sm:block w-1 h-1 rounded-full bg-zinc-800"></span>
+            <span className="hidden sm:block w-1 h-1 rounded-full bg-zinc-800" />
             <span className="flex items-center gap-2">
               <Check className="w-4 h-4 text-[#00BCD4]" />
               100% Free & Private

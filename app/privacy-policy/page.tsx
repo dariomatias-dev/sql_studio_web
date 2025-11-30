@@ -15,8 +15,8 @@ const PrivacyPolicyPage = () => {
 
   return (
     <section className="relative min-h-screen bg-white pt-32 pb-24 overflow-hidden">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-slate-50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#00BCD4]/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-slate-50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#00BCD4]/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
       <div className="relative z-10 max-w-3xl mx-auto px-6">
         <div className="text-center mb-16 border-b border-slate-100 pb-12">
@@ -64,7 +64,7 @@ const PrivacyPolicyPage = () => {
                   "The operating system you use on your mobile device",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#00BCD4] shrink-0"></div>
+                    <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#00BCD4] shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -104,14 +104,14 @@ const PrivacyPolicyPage = () => {
               </p>
               <ul className="space-y-3 my-6 pl-2">
                 <li className="flex items-start gap-3">
-                  <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0"></div>
+                  <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0" />
                   <span>
                     As required by law, such as to comply with a subpoena, or
                     similar legal process;
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0"></div>
+                  <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0" />
                   <span>
                     When they believe in good faith that disclosure is necessary
                     to protect their rights, protect your safety or the safety
@@ -120,7 +120,7 @@ const PrivacyPolicyPage = () => {
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0"></div>
+                  <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0" />
                   <span>
                     With their trusted services providers who work on their
                     behalf, do not have an independent use of the information we

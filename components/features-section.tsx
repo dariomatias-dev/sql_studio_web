@@ -52,10 +52,10 @@ export const FeaturesSection = () => {
       id="features"
       className="relative py-24 px-4 md:px-8 bg-white overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[600px] h-[600px] bg-[#00BCD4]/5 rounded-full blur-[100px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-slate-100 rounded-full blur-[80px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[600px] h-[600px] bg-[#00BCD4]/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-slate-100 rounded-full blur-[80px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
@@ -93,8 +93,8 @@ export const FeaturesSection = () => {
               </p>
 
               <div className="absolute top-4 right-4 w-2.5 h-2.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-[#00BCD4] opacity-75 animate-ping"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00BCD4]"></span>
+                <span className="absolute inline-flex h-full w-full rounded-full bg-[#00BCD4] opacity-75 animate-ping" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00BCD4]" />
               </div>
             </div>
           ))}

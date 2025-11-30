@@ -33,8 +33,8 @@ const ContactPage = () => {
 
   return (
     <section className="relative min-h-screen bg-white pt-32 pb-24 overflow-hidden">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-slate-50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#00BCD4]/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-slate-50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#00BCD4]/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="text-center mb-16 md:mb-20">
@@ -83,7 +83,7 @@ const ContactPage = () => {
                   </div>
                 </div>
 
-                <div className="w-full h-px bg-slate-200"></div>
+                <div className="w-full h-px bg-slate-200" />
 
                 <div className="flex gap-4">
                   <a
@@ -120,7 +120,7 @@ const ContactPage = () => {
           </div>
 
           <div className="bg-white p-8 md:p-10 rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] border border-slate-100 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110" />
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

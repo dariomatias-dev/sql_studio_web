@@ -81,7 +81,7 @@ export const Header = () => {
                   )}
                 >
                   <span className="relative z-10">{label}</span>
-                  <span className="absolute inset-0 bg-[#00BCD4]/10 rounded-full scale-0 transition-transform duration-300 ease-out hover:scale-100 origin-center z-0"></span>
+                  <span className="absolute inset-0 bg-[#00BCD4]/10 rounded-full scale-0 transition-transform duration-300 ease-out hover:scale-100 origin-center z-0" />
                 </Link>
               ))}
             </div>
