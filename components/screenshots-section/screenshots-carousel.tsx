@@ -6,8 +6,8 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
 const screenshots = Array.from(
-  { length: 12 },
-  (_, i) => `/screenshots/screenshot_${(i % 8) + 1}.jpg`
+  { length: 10 },
+  (_, i) => `/screenshots/screenshot_${i + 1}.jpg`
 );
 
 export const ScreenshotsCarousel = () => {

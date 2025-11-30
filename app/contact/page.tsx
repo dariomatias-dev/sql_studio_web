@@ -171,7 +171,7 @@ const ContactPage = () => {
             </div>
           </div>
 
-          <div className="bg-white p-8 md:p-10 rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] border border-slate-100 relative overflow-hidden">
+          <div className="bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] border border-slate-100 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110" />
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

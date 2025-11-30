@@ -64,7 +64,7 @@ export const HeroSection = () => {
           </Link>
         </div>
 
-        <div className="mt-24 w-full grid grid-cols-3 gap-6 md:gap-12 border-t border-white/5 pt-10">
+        <div className="mt-24 w-full hidden grid-cols-3 gap-6 md:gap-12 border-t border-white/5 pt-10 md:grid">
           {[
             { icon: Database, label: "SQLite Native" },
             { icon: Zap, label: "Instant Query" },
