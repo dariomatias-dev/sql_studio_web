@@ -1,19 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import {
-  FaArrowUp,
-  FaChevronRight,
-  FaEnvelope,
-  FaGithub,
-  FaLinkedin,
-} from "react-icons/fa";
+import { FaArrowUp, FaChevronRight } from "react-icons/fa";
 
-const links = [
-  { href: "https://github.com/dariomatias-dev", icon: FaGithub },
-  { href: "https://www.linkedin.com/in/dariomatias-dev/", icon: FaLinkedin },
-  { href: "mailto:matiasdario75@gmail.com", icon: FaEnvelope },
-];
+import { socialLinks } from "@/contants/social-links";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -24,7 +14,7 @@ export const Footer = () => {
 
   return (
     <footer className="relative bg-black pt-24 pb-12 overflow-hidden border-t border-white/10">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-20" />
+      <div className="absolute inset-0 mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
 
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#00BCD4]/40 to-transparent shadow-[0_0_15px_rgba(0,188,212,0.5)]" />
 
@@ -144,7 +134,7 @@ export const Footer = () => {
               Built with passion for the SQL community.
             </p>
             <div className="flex items-center gap-3">
-              {links.map(({ href, icon: Icon }) => (
+              {socialLinks.map(({ href, icon: Icon }) => (
                 <a
                   key={href}
                   href={href}
