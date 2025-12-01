@@ -12,6 +12,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaGooglePlay } from "react-icons/fa";
 
+import { PingIndicator } from "@/components/ping-indicator";
 import { useHeaderTransparency } from "@/context/header-transparency-context";
 
 enum Status {
@@ -68,10 +69,8 @@ const DownloadBetaPage = () => {
       <div className="relative z-10 w-full max-w-2xl px-6 flex flex-col items-center">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-yellow-50 border border-yellow-200 shadow-sm mb-8 cursor-default">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
-            </span>
+            <PingIndicator size={8.5} color="#EAB308" glow={false} />
+
             <span className="text-xs font-bold text-yellow-700 tracking-wider uppercase">
               Closed Beta Access
             </span>

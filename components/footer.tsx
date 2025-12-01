@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FaArrowUp, FaChevronRight } from "react-icons/fa";
 
 import { socialLinks } from "@/contants/social-links";
+import { PingIndicator } from "./ping-indicator";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -38,10 +39,8 @@ export const Footer = () => {
             </p>
 
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-zinc-900/50 border border-white/10 backdrop-blur-md transition-colors hover:border-[#00BCD4]/30 cursor-default">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-              </span>
+              <PingIndicator size={10} color="#10AF78" glow={false} />
+
               <span className="text-xs font-bold text-zinc-300 tracking-wider">
                 <span className="uppercase">Stable Release</span> v0.1.x
               </span>

@@ -1,6 +1,7 @@
 import { Check, ShieldCheck } from "lucide-react";
 
 import { DownloadButton } from "./download-button";
+import { PingIndicator } from "./ping-indicator";
 
 export const CtaSection = () => {
   return (
@@ -25,10 +26,7 @@ export const CtaSection = () => {
           <div className="h-4 w-px bg-white/10" />
           <span className="flex items-center gap-2 text-sm font-medium text-zinc-300 font-mono tracking-tight">
             v0.1.x
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00BCD4] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00BCD4]" />
-            </span>
+            <PingIndicator />
           </span>
         </div>
 

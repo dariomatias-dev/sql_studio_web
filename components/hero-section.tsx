@@ -2,6 +2,7 @@ import { ArrowRight, Database, Sparkles, WifiOff, Zap } from "lucide-react";
 import Link from "next/link";
 
 import { DownloadButton } from "./download-button";
+import { PingIndicator } from "./ping-indicator";
 
 export const HeroSection = () => {
   return (
@@ -23,11 +24,9 @@ export const HeroSection = () => {
         <div className="group relative inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-zinc-900/50 border border-white/10 backdrop-blur-xl shadow-lg shadow-[#00BCD4]/5 mb-10 transition-all hover:border-[#00BCD4]/30 hover:bg-zinc-900/80 cursor-default overflow-hidden">
           <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
-          <div className="flex h-2.5 w-2.5 relative items-center justify-center">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-[#00BCD4] opacity-75 animate-ping" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00BCD4] shadow-[0_0_10px_#00BCD4]" />
-          </div>
-          <span className="text-xs md:text-sm font-bold text-zinc-300 tracking-wider uppercase group-hover:text-white transition-colors">
+          <PingIndicator />
+          
+          <span className="pl-0.5 text-xs md:text-sm font-bold text-zinc-300 tracking-wider uppercase group-hover:text-white transition-colors">
             Native SQLite Client
           </span>
         </div>
