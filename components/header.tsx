@@ -3,7 +3,7 @@
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FaGooglePlay } from "react-icons/fa";
 
 import { useHeaderTransparency } from "@/context/header-transparency-context";
@@ -19,14 +19,42 @@ const navLinks = [
 export const Header = () => {
   const { enabled, setEnabled } = useHeaderTransparency();
 
+  const prevEnabled = useRef(true);
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+  const closeMenuActions = useCallback(() => {
+    setEnabled(prevEnabled.current);
 
-    setEnabled(!mobileMenuOpen);
-  }, [mobileMenuOpen, setEnabled]);
+    document.body.style.overflow = "";
+  }, [setEnabled]);
+
+  const openMenuActions = useCallback(() => {
+    prevEnabled.current = enabled;
+
+    setEnabled(false);
+
+    document.body.style.overflow = "hidden";
+  }, [enabled, setEnabled]);
+
+  const toggleMenu = useCallback(() => {
+    if (mobileMenuOpen) {
+      closeMenuActions();
+    } else {
+      openMenuActions();
+    }
+
+    setMobileMenuOpen(!mobileMenuOpen);
+  }, [mobileMenuOpen, openMenuActions, closeMenuActions]);
+
+  const closeMenu = useCallback(() => {
+    if (!mobileMenuOpen) return;
+
+    closeMenuActions();
+
+    setMobileMenuOpen(false);
+  }, [mobileMenuOpen, closeMenuActions]);
 
   useEffect(() => {
     if (!enabled) {
@@ -54,7 +82,11 @@ export const Header = () => {
       >
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <nav className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3 group z-50">
+            <Link
+              href="/"
+              onClick={closeMenu}
+              className="flex items-center gap-3 group z-50"
+            >
               <div className="relative">
                 <Image
                   src="/icons/sql_studio.png"
@@ -108,7 +140,7 @@ export const Header = () => {
             </div>
 
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={toggleMenu}
               className={cn(
                 "md:hidden relative z-50 p-2 focus:outline-none transition-colors duration-300",
                 scrolled ? "text-slate-800" : "text-white"
@@ -137,7 +169,7 @@ export const Header = () => {
             <Link
               key={href}
               href={href}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={closeMenu}
               className="text-2xl font-bold text-slate-800 hover:text-[#00BCD4] transition-colors"
             >
               {label}
@@ -146,7 +178,7 @@ export const Header = () => {
 
           <Link
             href="/download"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={closeMenu}
             className="mt-4 px-8 py-3 bg-[#00BCD4] text-white text-lg font-bold rounded-full shadow-lg shadow-[#00BCD4]/30 inline-flex items-center gap-2"
           >
             <FaGooglePlay className="w-5 h-5" />
